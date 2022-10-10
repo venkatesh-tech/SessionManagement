@@ -10,6 +10,11 @@ public class SourceServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+		Cookie[] cookies = request.getCookies();
+		for (int i = 0; i < cookies.length; i++) {
+			System.out.println(cookies[i].getName());
+			System.out.println(cookies[i].getValue());
+		}
 		String userName = request.getParameter("userName");
 		HttpSession session = request.getSession();
 		session.setAttribute("user", userName);
